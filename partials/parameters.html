@@ -1,0 +1,58 @@
+<form name="create" ng-submit="createParameter(parameter)" novalidate>
+  <div class="container">
+    <div class="newucces" class="row" ng-if="error">
+      <div class="row">
+        <div class="col-12">
+          <div class="alert alert-dismissible alert-danger">
+            Jest już taki paramter - podaj inny.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="myH2">
+          <h2>Parametry</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="my-label">Nazwa</div>
+        
+
+        <div class="form-group">
+          <input type="text" ng-model="parameter.name" name="name" ng-class="{'is-valid': create.name.$touched && create.name.$valid, 'is-invalid': create.name.$touched && create.name.$invalid}" class="form-control form-control-lg" placeholder="podaj nowy parametr" autocomplete="off" ng-required="true">
+          <div ng-show="create.name.$touched && create.name.$invalid">
+            <small class="form-danger">wymagane</small>
+          </div>
+        </div>
+
+        <input class="btn btn-success float-right" type="submit" value="Dodaj" ng-disabled="create.$invalid">
+      </div>
+      <div class="col-md-6 offset-md-1">
+        <h5>Istniejce</h5>
+        <hr>
+        <p>Usunięcie parametru z listy usunie go również z opisów przedmiotów</p><br>
+        <div class="box-params">
+          <table class="table table-sm table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Parametr</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="reveal-animation" ng-repeat="parameter in parameters">
+                <td>{{parameter.name}}</td>
+                <td class="text-right">
+                  <button type="button" ng-click="delete(parameter, $index)" class="btn btn-danger btn-sm">&times;</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

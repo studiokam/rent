@@ -1,0 +1,44 @@
+<form name="create" ng-submit="createItem(product)" novalidate>
+  <div class="container">
+    <div class="newucces" class="row" ng-if="success">
+      <div class="row">
+        <div class="col-12">
+          <div class="alert alert-dismissible alert-success">
+            <strong>Brawo!</strong> Poprawnie dodano przedmiot do listy.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="myH2">
+          <h2>Dodaj przedmiot</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="my-label">Nazwa</div>
+        <div class="form-group">
+          <input type="text" ng-model="product.name" name="name" ng-class="{'is-valid': create.name.$touched && create.name.$valid, 'is-invalid': create.name.$touched && create.name.$invalid}" class="form-control form-control-lg" placeholder="podaj nazwe" autocomplete="off" ng-required="true">
+          <div ng-show="create.name.$touched && create.name.$invalid">
+            <small class="form-danger">wymagane</small>
+          </div>
+        </div>
+        <div class="edit-params">
+          <div class="form-group">
+            <div ng-repeat="param in params">
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" id="{{param.id}}" checklist-model="take.params" checklist-value="param.id"> <label class="custom-control-label" for="{{param.id}}">{{param.name}}
+                </label>
+              </div>
+            </div>  
+          </div>
+          <a href="#/parameters">Edytuj parametry</a>
+        </div>
+        <hr>
+        <input class="btn btn-success float-right" type="submit" value="Dodaj" ng-disabled="create.$invalid">
+      </div>
+    </div>
+  </div>
+</form>

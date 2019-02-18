@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row search">
+    <div class="col-md-7">
+      <h2>Lista przedmiotów</h2>
+    </div>
+    <div class="col-md-5">
+      <div class="my-label">Szukaj - podaj tytuł lub parametr</div>
+      <div class="form-group">
+        <input type="text" class="form-control" ng-model="search" placeholder="wpisz czego szukasz ...">
+      </div>
+    </div>
+  </div>
+  <div class="sortuj-info">Sortuj</div>
+  <div class="clearfix"></div>  
+  <div class="sortuj">
+    <a class="btn btn-secondary btn-sm" href="" ng-click="predicate = 'name'; reverse=!reverse">Nazwa</a>
+    <a class="btn btn-secondary btn-sm" href="" ng-click="predicate = 'status'; reverse=!reverse">Status</a>
+  </div>
+  <div ng-if="alert" class="alert alert-{{alert.type}}">{{alert.msg}}</div>
+  <div ng-repeat="item in itemList | orderBy:predicate:reverse | filter: search">
+    <div class="row list-item">
+      <div class="col-md-2 ">
+        <div class="text-center">
+          <!-- <img src="uploads/1.jpg" alt="thumb" class="list-thumb img-fluid""> -->
+          <img ng-show="{{item.thumb != ''}}" ng-src="uploads/{{item.id}}/{{item.thumb}}" alt="" class="list-thumb">
+          <img ng-show="{{!item.thumb}}" src="uploads/noimage.png" alt="" class="list-thumb">
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="items-desc">
+          <div class="item-title">{{item.name}}</div>
+          <span class="list-param" ng-repeat="param in item.param_array">
+            {{param}}
+          </span>
+        </div>
+      </div>
+      <div class="col-md-3 text-right">
+        <div class="item-status status-success" ng-show="item.status == 1">U klienta do {{item.endRentDate | limitTo:16}}</div>
+        <div class="item-status" ng-show="item.status == 0">W magazynie</div>
+        <div class="item-status status-warning" ng-show="item.status == 2">Potwierdź powrót</div>
+        <div class="item-more">
+          <a href="#/options/{{item.id}}" class="btn btn-success btn-sm">Opcje przedmiotu</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

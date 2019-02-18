@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <title>Rent</title>
+  </head>
+  <body ng-app="app">
+
+    <div class="container">
+      <div class="row baner">
+        <div class="col-6">
+          <div class="logo"><a href="index.html#/list">nG-Rent</a></div>
+          <div class="sentence">
+            <p>Inventory system</p>
+            <small>for your company</small>
+          </div>
+        </div>
+        <div class="col-6 text-right add-new">
+          <a href="#/list" class="btn btn-success ">Lista</a>
+          <a href="#/new" class="btn btn-success ">Dodaj nowy</a>
+        </div>
+      </div>
+      <hr class="mb-baner">
+    </div>
+
+    <div class="main" ng-view></div>
+    
+    <div class="footer text-center">
+      <p>made in ng by konrad</p>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- Angular -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/application.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/angulaf-file-upload.min.js"></script>
+
+    <script src="js/directives.js"></script>
+    <script src="js/controllers/controllers-site.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="js/checklist-model.js"></script>
+
+  </body>
+</html>
